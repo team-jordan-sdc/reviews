@@ -2,7 +2,7 @@ import React from 'react';
 import Review from './Review.jsx'
 
 
-var ReviewList = (props) => (
+var ReviewList2 = (props) => (
 
   <div className="review_container">
 
@@ -13,4 +13,4 @@ var ReviewList = (props) => (
 
 );
 
-export default ReviewList;
+export default ReviewList2;

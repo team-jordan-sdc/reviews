@@ -4,9 +4,14 @@ const Review = (props) => (
 
   <div>
     <div className="review_entry">
-
-      <div className="rating">{props.review.rating}</div>
-      <div className="author">{props.review.author}</div>
+      <table>
+        <td>
+          <div className={"rating_" + (props.review.rating > 50 ? "high" : "low")}>{props.review.rating}</div>
+        </td>
+        <td>
+          <div className="author">{props.review.author}</div>
+        </td>
+      </table>
       <div className="source">{props.review.source}</div>
       <div className="review_text">{props.review.review}</div>
     </div>
@@ -15,3 +20,5 @@ const Review = (props) => (
 )
 
 export default Review;
+
+

@@ -59,7 +59,7 @@ const generateReviewObject = (id) => {
   return {
     index: id,
     filmname: titles[id],
-    reviews: generateReviews(5)
+    reviews: generateReviews(12)
   }
 
 }
@@ -89,8 +89,9 @@ async function  seed() {
 
     const db = client.db('moodu');
     const collections = await db.collections();
-    if (collections.map(c => c.s.name).includes('reviews')) {
-      await db.reviews.drop();
+
+    if (collections.map(collection => collection.s.name).includes('reviews')) {
+      await db.collection('reviews').drop();
     }
 
     for (var i = 0; i < 100; i++) {
