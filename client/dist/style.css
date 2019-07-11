@@ -70,9 +70,6 @@ body{
   display: none;
 }
 
-#m_backward{
-  height: 300px;
-}
 
 #p_forward, #m_forward{
   background-image: url(https://www.vudu.com/content/images/pov_right_arrow.svg);
@@ -88,10 +85,6 @@ body{
   display: none;
 }
 
-#m_forward{
-  top: 288px;
-  height: 300px;
-}
 
 .review_container:hover #p_backward{
   transition: 2s ease-in-out;
@@ -111,4 +104,8 @@ body{
 .review_container:hover #m_forward{
   transition: 2s ease-in-out;
   display: block;
+}
+
+#reviewheader {
+   color: #fff;
 }

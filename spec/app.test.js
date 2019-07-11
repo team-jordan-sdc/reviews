@@ -1,0 +1,26 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { shallow, configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import App from '../client/src/app.jsx';
+
+
+configure({adapter: new Adapter()});
+
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<App />, div);
+  ReactDOM.unmountComponentAtNode(div);
+});
+
+
+describe('App component', () => {
+  it('has Review header', () => {
+    const wrapper = shallow(<App />);
+    const text = wrapper.find('h3').text();
+    expect(text).toEqual('Reviews');
+  });
+});
+
+
+

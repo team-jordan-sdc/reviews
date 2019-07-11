@@ -6,7 +6,9 @@ const Review = (props) => (
     <div className="review_entry">
       <table>
         <td>
-          <div className={"rating_" + (props.review.rating > 50 ? "high" : "low")}>{props.review.rating}</div>
+          <div className={"rating_" + (props.review.rating > 50 ? "high" : "low")}>
+            <img src={`${props.review.rating > 50 ? 'https://www.vudu.com/bluesteel/images/Tomato_fresh.svg' : 'https://www.vudu.com/bluesteel/images/Tomato_rotten.svg'}`}></img>
+          </div>
         </td>
         <td>
           <div className="author">{props.review.author}</div>

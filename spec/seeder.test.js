@@ -20,20 +20,20 @@ describe('Database seeder', () => {
     expect(products.length).toBe(100);
   });
 
-test("should return valid document by Film Name", async () => {
+  test("should return valid document by Film Name", async () => {
     const result = await db.Review.find({"filmname" : reviews[0].filmname});
     expect(result).toBeTruthy();
-});
+  });
 
-test("should return valid Prod document by Product Name", async () => {
-  const result = await db.Product.find({"prodname" : products[0].prodname});
-  expect(result).toBeTruthy();
-});
+  test("should return valid Prod document by Product Name", async () => {
+    const result = await db.Product.find({"prodname" : products[0].prodname});
+    expect(result).toBeTruthy();
+  });
 
   test("should return valid document by ID", async () => {
 
-        const result = await db.Review.findById(reviews[0]._id);
-        expect(result).toBeTruthy();
+    const result = await db.Review.findById(reviews[0]._id);
+    expect(result).toBeTruthy();
   });
 
   test('should create review documents with the correct properties', () => {
@@ -47,18 +47,18 @@ test("should return valid Prod document by Product Name", async () => {
     expect(reviews[0].reviews[0].rating).toBeTruthy();
     expect(reviews[0].reviews[0].author).toBeTruthy();
 
-   });
+  });
 
-   test('should create product documents with the correct properties', () => {
+  test('should create product documents with the correct properties', () => {
     expect(products[0].prodname).toBeTruthy();
     expect(products[0].price).toBeTruthy();
     expect(products[0].about).toBeTruthy();
 
-   });
+  });
 
   afterAll(async () => {
-   // await db.Review.collection.drop();
-     console.log('Test finished')
+    // await db.Review.collection.drop();
+    console.log('Test finished')
   })
 
 })
