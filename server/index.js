@@ -17,6 +17,16 @@ app.get('/api/reviews', (req, res) => {
     .catch(err => console.log(err))
 });
 
+
+
+app.get('/api/products', (req, res) => {
+  db.getProduct()
+    .then(results => res.send(results))
+    .catch(err => console.log(err))
+});
+
+
+
 let port = 3001;
 
 app.listen(port, function() {

@@ -54,11 +54,45 @@ const getRandomNum = (min,max) => {
   return Math.floor(Math.random() * (+max - +min)) + +min;
 }
 
+function getRandomDate(date1, date2){
+  function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+  date1 = date1 || '01-01-1970'
+  date2 = date2 || new Date().toLocaleDateString()
+  date1 = new Date(date1).getTime()
+  date2 = new Date(date2).getTime()
+  if( date1>date2){
+    return new Date(getRandomArbitrary(date2,date1)).toLocaleDateString()
+  } else{
+    return new Date(getRandomArbitrary(date1, date2)).toLocaleDateString()
+
+  }
+}
+
+const  generateProductsObject = (id) => {
+  return {
+    index: id,
+    prodname: generateWords(2),
+    price: getRandomNum(100,5000),
+    picture: generateWords(1),
+    about: generateWords(4)
+  }
+}
 
 const generateReviewObject = (id) => {
   return {
     index: id,
     filmname: titles[id],
+    length: getRandomNum(80,200),
+    released: getRandomDate('07/07/2019', '01/01/2000'),
+    rating: getRandomNum(20,100),
+    studio: generateWords(1),
+    language: generateWords(1),
+    uhd: generateWords(4),
+    hdx: generateWords(4),
+    sd: generateWords(4),
+    cc: generateWords(1),
     reviews: generateReviews(12)
   }
 
@@ -94,10 +128,20 @@ async function  seed() {
       await db.collection('reviews').drop();
     }
 
+    if (collections.map(collection => collection.s.name).includes('products')) {
+      await db.collection('products').drop();
+    }
+
+
     for (var i = 0; i < 100; i++) {
       await db.collection('reviews').insertOne(
         generateReviewObject(i)
       );
+
+      await db.collection('products').insertOne(
+        generateProductsObject(i)
+      );
+
     }
 
   } catch (err) {

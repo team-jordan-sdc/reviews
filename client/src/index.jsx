@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
-import ReviewList from './components/ReviewList.jsx';
-import ReviewList2 from './components/ReviewList2.jsx';
+import ReviewCarousel from './components/ReviewCarousel.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -48,8 +47,7 @@ class App extends React.Component {
   // console.log(this.state.reviewData2)
     return (
       <div className="reviewcontainer">
-        <ReviewList reviews={this.state.reviewData1} filmname={this.state.filmName} />
-        <ReviewList2 reviews={this.state.reviewData2} filmname={this.state.filmName} />
+        <ReviewCarousel reviews1={this.state.reviewData1} reviews2={this.state.reviewData2} filmname={this.state.filmName} />
       </div>
     )
   }

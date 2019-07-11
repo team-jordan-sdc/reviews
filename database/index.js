@@ -3,9 +3,18 @@ mongoose.connect('mongodb://localhost:27017/moodu');
 
 
 /* SCHEMAS */
-let reviewsSchema = mongoose.Schema({
+const reviewsSchema = new mongoose.Schema({
   id: 'number',
   filmname: 'string',
+  length: 'number',
+  released: 'string',
+  rating: 'number',
+  studio: 'string',
+  language: 'string',
+  uhd: 'string',
+  hdx: 'string',
+  sd: 'string',
+  cc: 'string',
   reviews: [
     {
       id: 'number',
@@ -17,20 +26,20 @@ let reviewsSchema = mongoose.Schema({
   ]
 });
 
-
-let productsSchema = mongoose.Schema({
-  index: 'number',
+const  productsSchema = new mongoose.Schema({
+  id: 'number',
   prodname: 'string',
-  price: 'string',
-  added: 'string',
+  price: 'number',
   picture: 'string',
   about: 'string'
 }
 );
 
+
 /* MODELS */
-let Review = mongoose.model('Review', reviewsSchema);
-let Product = mongoose.model('Product', productsSchema);
+const  Review = mongoose.model('Review', reviewsSchema);
+const  Product = mongoose.model('Product', productsSchema);
+
 
 
 async function getReviewsforFilm(filmname)  {
@@ -41,16 +50,31 @@ async function getReviewsforFilm(filmname)  {
 
     return await Review.find(query);
 
-    // console.log(`res => ${JSON.stringify(res)}`);
 
   } catch (err) {
     console.log(err.stack);
   }
 
-};
+}
 
-module.exports.getReviewsforFilm = getReviewsforFilm;
+
+async function getProduct()  {
+
+  try {
+    return await Product.find();
+
+
+  } catch (err) {
+    console.log(err.stack);
+  }
+
+}
+
+
+
 module.exports.Review = Review;
 module.exports.Product = Product;
+module.exports.getReviewsforFilm = getReviewsforFilm;
+module.exports.getProduct = getProduct;
 
 
