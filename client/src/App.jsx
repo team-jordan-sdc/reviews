@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import ReviewCarousel from './components/ReviewCarousel.jsx';
+import AdditionalInfo from './components/AdditionalInfo.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,7 +10,8 @@ class App extends React.Component {
     this.state = {
       reviewData1: [],
       reviewData2: [],
-      filmName: ''
+      filmName: '',
+      additionalInfo: []
     };
     this.getReviews = this.getReviews.bind(this);
   }
@@ -30,7 +32,7 @@ class App extends React.Component {
             arr2.push(data[0].reviews[i])
           }
         }
-        this.setState({reviewData1: arr1, reviewData2: arr2, filmname: data[0].filmname})
+        this.setState({reviewData1: arr1, reviewData2: arr2, filmname: data[0].filmname, additionalInfo: data[0]})
       })
   }
 
@@ -43,10 +45,12 @@ class App extends React.Component {
 
 
   render() {
+    {console.log(this.state.additionalInfo)}
     return (
       <div className="reviewcontainer">
-        <h3 id="reviewheader"> Reviews</h3>
+        <h4 id="reviewheader"> Reviews</h4>
         <ReviewCarousel reviews1={this.state.reviewData1} reviews2={this.state.reviewData2} filmname={this.state.filmName} />
+        <AdditionalInfo additionalInfo={this.state.additionalInfo} />
       </div>
     )
   }

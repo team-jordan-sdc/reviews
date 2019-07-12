@@ -44,7 +44,7 @@ body{
   vertical-align: top;
   font-style: italic;
 }
-  .rating_high{
+ .rating_high{
    color: red;
   }
  .rating_low{
@@ -53,10 +53,10 @@ body{
 
 #review_carousel{
   width: fit-content;
-  height: 260px;
+  height: 480px;
   transition: transform .5s ease;
   white-space: nowrap;
-   }
+}
 
 #p_backward, #m_backward{
   background-image: url(https://www.vudu.com/content/images/pov_left_arrow.svg);
@@ -76,13 +76,13 @@ body{
   background-position: center;
   background-repeat: no-repeat;
   position: absolute;
-  top: 6px;
-  right: 0px;
   z-index: 99;
   height: 480px;
   width: 35px;
   background-color: rgba(0, 0, 0, 0.582);
   display: none;
+  top: 60px;
+  right: 0px;
 }
 
 
@@ -106,6 +106,61 @@ body{
   display: block;
 }
 
-#reviewheader {
+#reviewheader, #moreInfo {
    color: #fff;
+}
+
+
+.rowDetails{
+  color: #fff;
+  font-size: 13px;
+  font-weight: 400;
+  margin-left: 15px;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+
+  }
+
+
+.rowDetailsmoreMovies {
+  display: flex;
+  font-size: 13px;
+  font-weight: 400;
+  color: #fff;
+  font-size: 13px;
+  margin-left: 15px;
+}
+
+.rowDetailsmoreMovies img {
+  margin-right: 10px;
+  display: block;
+}
+
+
+.rowDetailsmoreMovies h4 {
+  margin-right: 10px;
+  display: inline-block;;
+}
+
+.detailBox {
+    border-radius: 3px;
+    background-color: #fff;
+    font-weight: 800;
+    color: #031b2b;
+    left: 50%;
+    top: calc(50% + 1px);
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 80%;
+}
+
+.leftDetails {
+  display: inline-block;
+  float: left;
+}
+
+.rightDetails {
+  display: inline-block;
+  float: left;
+  margin-left: 500px;
+  margin-top: 60px;
 }
