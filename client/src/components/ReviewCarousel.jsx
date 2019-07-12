@@ -1,7 +1,9 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import ReviewList from './ReviewList.jsx';
 import ReviewList2 from './ReviewList2.jsx';
 import $ from 'jquery';
+import { ReviewTitle, Pforward, Pbackward, ReviewContainer, ReviewCarouselDiv } from '../styling.jsx';
 
 class ReviewCarousel extends React.Component {
   constructor(props){
@@ -22,8 +24,10 @@ class ReviewCarousel extends React.Component {
   }
 
   moveForward(){
-    if(($('#review_carousel').position().left - 800) * -1 > $('#review_carousel').width() - $(window).width()) {
-      this.setState({position: ($('#review_carousel').width() - $(window).width()) * -1});
+    const reviewCarPosition = ReactDOM.findDOMNode(this.refs['ReviewCarousel']).getBoundingClientRect();
+
+    if((reviewCarPosition.left - 800) * -1 > reviewCarPosition.width - window.innerWidth) {
+      this.setState({position: (reviewCarPosition.width - window.innerWidth) * -1});
     } else {
       this.setState({position: this.state.position - 800});
     }
@@ -31,14 +35,15 @@ class ReviewCarousel extends React.Component {
 
   render() {
     return (
-      <div className="review_container">
-        <div id="p_backward" onClick={this.moveBackward}></div>
-        <div id="review_carousel" style={{ transform: `translate3d(${this.state.position}px, 0px, 0px)` }}>
+      <ReviewContainer>
+        <ReviewTitle>Reviews</ReviewTitle>
+        <Pbackward onClick={this.moveBackward} />
+        <ReviewCarouselDiv ref="ReviewCarousel" position={this.state.position}>
           <ReviewList reviews={this.props.reviews1} filmname={this.props.filmName} />
           <ReviewList2 reviews={this.props.reviews2} filmname={this.props.filmName} />
-        </div>
-        <div id="p_forward" onClick={this.moveForward}></div>
-      </div>
+        </ReviewCarouselDiv>
+        <Pforward onClick={this.moveForward} />
+      </ReviewContainer>
     )
   }
 }

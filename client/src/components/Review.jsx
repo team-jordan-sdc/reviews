@@ -1,24 +1,25 @@
 import React from 'react';
+import { PlainDiv, ReviewEntry, ReviewText, Source, Author, ReviewRating, PlainTable, PlainTD } from '../styling.jsx';
 
 const Review = (props) => (
 
-  <div>
-    <div className="review_entry">
-      <table>
-        <td>
-          <div className={"rating_" + (props.review.rating > 50 ? "high" : "low")}>
+  <PlainDiv>
+    <ReviewEntry>
+      <PlainTable>
+        <PlainTD>
+          <ReviewRating>
             <img src={`${props.review.rating > 50 ? 'https://www.vudu.com/bluesteel/images/Tomato_fresh.svg' : 'https://www.vudu.com/bluesteel/images/Tomato_rotten.svg'}`}></img>
-          </div>
-        </td>
-        <td>
-          <div className="author">{props.review.author}</div>
-        </td>
-      </table>
-      <div className="source">{props.review.source}</div>
-      <div className="review_text">{props.review.review}</div>
-    </div>
+          </ReviewRating>
+        </PlainTD>
+        <PlainTD>
+          <Author>{props.review.author}</Author>
+        </PlainTD>
+      </PlainTable>
+      <Source>{props.review.source}</Source>
+      <ReviewText>{props.review.review}</ReviewText>
+    </ReviewEntry>
 
-  </div>
+  </PlainDiv>
 )
 
 export default Review;

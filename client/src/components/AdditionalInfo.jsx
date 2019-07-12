@@ -1,38 +1,39 @@
 import React from 'react'
+import { PlainDiv, LeftDetails, RightDetails, ReviewTitle, RowDetails, RowDetailsmoreMovies, PlainP, DetailBox } from '../styling.jsx';
 
 var AdditionalInfo = (props) => (
-  <div className="moreInfoContainer">
-    <div className="leftDetails">
-      <h4 id="moreInfo"> More Info </h4>
-      <div className="rowDetails"> {`Length: ${props.additionalInfo.length} minutes`} </div>
-      <div className="rowDetails"> {`Released: ${props.additionalInfo.released}`} </div>
-      <div className="rowDetails"> {`Rating: ${props.additionalInfo.rating}`} </div>
-      <div className="rowDetails"> {`Studio: ${props.additionalInfo.studio}`} </div>
-      <div className="rowDetails"> {`Language: ${props.additionalInfo.language}`} </div>
-      <div className="rowDetailsmoreMovies">
+  <PlainDiv>
+    <LeftDetails>
+      <ReviewTitle> More Info </ReviewTitle>
+      <RowDetails> {`Length: ${props.additionalInfo.length} minutes`} </RowDetails>
+      <RowDetails> {`Released: ${props.additionalInfo.released}`} </RowDetails>
+      <RowDetails> {`Rating: ${props.additionalInfo.rating}`} </RowDetails>
+      <RowDetails> {`Studio: ${props.additionalInfo.studio}`} </RowDetails>
+      <RowDetails> {`Language: ${props.additionalInfo.language}`} </RowDetails>
+      <RowDetailsmoreMovies>
         <img src='https://www.vudu.com/bluesteel/images/dma_small.svg' alt="Movies Anywhere"></img>
-        <p>Movies Anywhere</p>
-      </div>
-    </div>
-    <div className="rightDetails">
-      <div className="rowDetailsmoreMovies">
-        <h4 className="detailBox">UHD</h4>
-        <div className="rowDetails"> {props.additionalInfo.uhd}  </div>
-      </div>
-      <div className="rowDetailsmoreMovies">
-        <h4 className="detailBox">HDX</h4>
-        <div className="rowDetails"> {props.additionalInfo.hdx} </div>
-      </div>
-      <div className="rowDetailsmoreMovies">
-        <h4 className="detailBox">SD</h4>
-        <div className="rowDetails"> {props.additionalInfo.sd} </div>
-      </div>
-      <div className="rowDetailsmoreMovies">
-        <h4 className="detailBox">CC</h4>
-        <div className="rowDetails"> {props.additionalInfo.cc} </div>
-      </div>
-    </div>
-  </div>
+        <PlainP>Movies Anywhere</PlainP>
+      </RowDetailsmoreMovies>
+    </LeftDetails>
+    <RightDetails>
+      <RowDetailsmoreMovies>
+         <DetailBox>UHD</DetailBox>
+         <RowDetails> {props.additionalInfo.uhd}  </RowDetails>
+      </RowDetailsmoreMovies>
+      <RowDetailsmoreMovies>
+        <DetailBox>HDX</DetailBox>
+        <RowDetails> {props.additionalInfo.hdx} </RowDetails>
+      </RowDetailsmoreMovies>
+      <RowDetailsmoreMovies>
+        <DetailBox>SD</DetailBox>
+        <RowDetails> {props.additionalInfo.sd} </RowDetails>
+      </RowDetailsmoreMovies>
+      <RowDetailsmoreMovies>
+        <DetailBox>CC</DetailBox>
+        <RowDetails> {props.additionalInfo.cc} </RowDetails>
+      </RowDetailsmoreMovies>
+    </RightDetails>
+  </PlainDiv>
 
 )
 

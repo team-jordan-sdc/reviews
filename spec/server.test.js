@@ -10,8 +10,8 @@ describe('Express server', () => {
 
     expect(response.statusCode).toBe(200);
     expect(response.body.length).toBe(1);
-    expect(response.body[0]).toHaveProperty("reviews");
-    expect(response.body[0]).toHaveProperty("filmname");
+    expect(response.body[0]).toHaveProperty('reviews');
+    expect(response.body[0]).toHaveProperty('filmname');
   });
 
 
@@ -21,8 +21,8 @@ describe('Express server', () => {
 
     expect(response.statusCode).toBe(200);
     expect(response.body.length).toBe(100);
-    expect(response.body[0]).toHaveProperty("prodname");
-    expect(response.body[0]).toHaveProperty("price");
+    expect(response.body[0]).toHaveProperty('prodname');
+    expect(response.body[0]).toHaveProperty('price');
   });
 
 });

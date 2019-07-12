@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import ReviewCarousel from './components/ReviewCarousel.jsx';
 import AdditionalInfo from './components/AdditionalInfo.jsx';
+import {PlainDiv} from './styling.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -45,13 +46,11 @@ class App extends React.Component {
 
 
   render() {
-    {console.log(this.state.additionalInfo)}
     return (
-      <div className="reviewcontainer">
-        <h4 id="reviewheader"> Reviews</h4>
+      <PlainDiv>
         <ReviewCarousel reviews1={this.state.reviewData1} reviews2={this.state.reviewData2} filmname={this.state.filmName} />
         <AdditionalInfo additionalInfo={this.state.additionalInfo} />
-      </div>
+      </PlainDiv>
     )
   }
 }

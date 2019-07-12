@@ -20,17 +20,17 @@ describe('Database seeder', () => {
     expect(products.length).toBe(100);
   });
 
-  test("should return valid document by Film Name", async () => {
-    const result = await db.Review.find({"filmname" : reviews[0].filmname});
+  test('should return valid document by Film Name', async () => {
+    const result = await db.Review.find({ "filmname": reviews[0].filmname });
     expect(result).toBeTruthy();
   });
 
-  test("should return valid Prod document by Product Name", async () => {
-    const result = await db.Product.find({"prodname" : products[0].prodname});
+  test('should return valid Prod document by Product Name', async () => {
+    const result = await db.Product.find({ "prodname": products[0].prodname });
     expect(result).toBeTruthy();
   });
 
-  test("should return valid document by ID", async () => {
+  test('should return valid document by ID', async () => {
 
     const result = await db.Review.findById(reviews[0]._id);
     expect(result).toBeTruthy();
@@ -58,7 +58,7 @@ describe('Database seeder', () => {
 
   afterAll(async () => {
     // await db.Review.collection.drop();
-    console.log('Test finished')
+    console.log('Test finished');
   })
 
-})
+});

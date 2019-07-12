@@ -1,8 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const db = require('../database/index.js');
 const Promise = require('bluebird');
-let app = express();
+const db = require('../database/index.js');
+
+
+const app = express();
 
 
 app.use(bodyParser.json());
@@ -24,8 +26,6 @@ app.get('/api/products', (req, res) => {
     .then(results => res.send(results))
     .catch(err => console.log(err))
 });
-
-
 
 let port = 3001;
 
