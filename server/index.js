@@ -1,30 +1,31 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const Promise = require('bluebird');
 const db = require('../database/index.js');
-let app = express();
+
+
+const app = express();
 
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/../client/dist'));
 
-//app.post('/repos', function (req, res) {
 
-  //github.getReposByUsername(req.body.username, function(githubObject) {
-    //         db.save(githubObject);
-    //});
+app.get('/api/reviews', (req, res) => {
+  db.getReviewsforFilm(req.query.filmname)
+    .then(results => res.send(results))
+    .catch(err => console.log(err))
+});
 
-    //res.end();
 
-  //});
 
-//app.get('/repos', function (req, res) {
-
-  //db.getPopular(function(repos) {
-   // res.json(repos);
-  //});
-//});
+app.get('/api/products', (req, res) => {
+  db.getProduct()
+    .then(results => res.send(results))
+    .catch(err => console.log(err))
+});
 
 let port = 3001;
 
