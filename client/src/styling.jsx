@@ -39,10 +39,12 @@ const ReviewText = styled.div`
 const Author = styled.div`
   font-size: 17px;
 `;
+Author.displayName = 'Author';
 
 const ReviewRating = styled.div`
   font-size: 17px;
 `;
+ReviewRating.displayName = 'ReviewRating';
 
 const Source = styled.div`
 font-size: 12px;
@@ -52,6 +54,7 @@ color: #b0bec5;
 vertical-align: top;
 font-style: italic;
 `;
+Source.displayName = 'Source';
 
 const ReviewlistContainer = styled.div`
   width: 100%;
@@ -59,6 +62,8 @@ const ReviewlistContainer = styled.div`
   display:flex;
   height: 240px;
 `;
+ReviewlistContainer.displayName = 'ReviewlistContainer';
+
 
 const ReviewTitle = styled.h4`
    color: white;
@@ -66,7 +71,7 @@ const ReviewTitle = styled.h4`
    margin-bottom: 5px;
 `;
 
-const Pbackward  = styled.div`
+const Pbackward = styled.div`
 background-image: url(https://www.vudu.com/content/images/pov_left_arrow.svg);
 background-position: center;
 background-repeat: no-repeat;
@@ -78,7 +83,7 @@ background-color: rgba(0, 0, 0, 0.582);
 display: none;
 `;
 
-const Pforward  = styled.div`
+const Pforward = styled.div`
   background-image: url(https://www.vudu.com/content/images/pov_right_arrow.svg);
   background-position: center;
   background-repeat: no-repeat;
@@ -131,6 +136,7 @@ const RowDetails = styled.div`
   margin-bottom: 5px;
   box-sizing: border-box;
 `;
+RowDetails.displayName = 'RowDetails';
 
 const RowDetailsmoreMovies = styled.div`
   display: flex;
@@ -141,7 +147,7 @@ const RowDetailsmoreMovies = styled.div`
   margin-left: 15px;
 `;
 
-const DetailBox  = styled.h4`
+const DetailBox = styled.h4`
   border-radius: 3px;
   background-color: #fff;
   font-weight: 800;
