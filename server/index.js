@@ -2,19 +2,20 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const Promise = require('bluebird');
 const db = require('../database/index.js');
-
-
 const app = express();
 
-
+app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(__dirname + '/../client/dist'));
 
+app.get('/', (req, res) => {
+  console.log("afdghadgf")
+  res.send(200);
+});
 
 app.get('/api/reviews', (req, res) => {
-  db.getReviewsforFilm(req.query.filmname)
+     db.getReviewsforFilm(req.query.filmname)
     .then(results => res.send(results))
     .catch(err => console.log(err))
 });

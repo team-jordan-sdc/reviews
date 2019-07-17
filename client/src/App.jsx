@@ -18,7 +18,7 @@ class App extends React.Component {
   }
 
   getReviews(filmname){
-    fetch(`http://localhost:3001/api/reviews?filmname=${filmname}`, {
+      fetch(`/api/reviews?filmname=${filmname}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     })
@@ -40,8 +40,9 @@ class App extends React.Component {
 
 
   componentDidMount() {
-
-    this.getReviews('The Shawshank Redemption');
+    let qs = new URLSearchParams(window.location.search)
+    let filmName = qs.get('filmname') || 'The Shawshank Redemption';
+    this.getReviews(filmName);
   }
 
 
