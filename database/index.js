@@ -4,7 +4,7 @@ mongoose.connect('mongodb://localhost:27017/moodu');
 
 /* SCHEMAS */
 const reviewsSchema = new mongoose.Schema({
-  id: 'number',
+  index: 'number',
   filmname: 'string',
   length: 'number',
   released: 'string',
@@ -42,11 +42,11 @@ const  Product = mongoose.model('Product', productsSchema);
 
 
 
-async function getReviewsforFilm(filmname)  {
+async function getReviewsforFilm(index)  {
 
   try {
 
-    let query = {"filmname": filmname}
+    let query = {index: index}
 
     return await Review.find(query);
 

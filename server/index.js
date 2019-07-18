@@ -15,7 +15,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/reviews', (req, res) => {
-     db.getReviewsforFilm(req.query.filmname)
+  //console.log(req.query)
+     db.getReviewsforFilm(req.query.id)
     .then(results => res.send(results))
     .catch(err => console.log(err))
 });

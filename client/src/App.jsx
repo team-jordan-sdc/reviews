@@ -17,8 +17,8 @@ class App extends React.Component {
     this.getReviews = this.getReviews.bind(this);
   }
 
-  getReviews(filmname){
-      fetch(`/api/reviews?filmname=${filmname}`, {
+  getReviews(index){
+      fetch(`/api/reviews?id=${index}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     })
@@ -41,8 +41,8 @@ class App extends React.Component {
 
   componentDidMount() {
     let qs = new URLSearchParams(window.location.search)
-    let filmName = qs.get('filmname') || 'The Shawshank Redemption';
-    this.getReviews(filmName);
+    let index = qs.get('id') || 0;
+    this.getReviews(index);
   }
 
 
