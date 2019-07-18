@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get('/', (req, res) => {
-  console.log("afdghadgf")
+  console.log("root")
   res.send(200);
 });
 
