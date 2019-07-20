@@ -34,10 +34,14 @@ npm run react-dev
 
 npm run server-dev
 
-
 ## Running the tests
 
 npm run test
+
+
+## Usage
+To retrieve set of reviews for a movie, use a query string: http://localhost:3001/?id=(number from 0-100)
+
 
 
 ## Built With
