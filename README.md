@@ -1,5 +1,9 @@
 # Reviews Component for Moodu Project
 
+# contributors
+1. Amol Gajewar - Refoactoring Backend
+1. Galina Berger - Original
+
 Moodu is a full-stack web application used to display information for a specific TV show or a movie.  Our project constists of several modules including component that dispalys featured movie main information, component displaying information about the actors, and component displaying reviews and additional information
 
 This particular component dispalys a scrollable list of reviews along with additional information such as length of the movie, rating, etc...
