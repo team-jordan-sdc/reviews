@@ -127,8 +127,7 @@ describe('Express server', () => {
 
     const response =
       await request('http://127.0.0.1:3001')
-          .delete('/api/reviews')
-          .send(deleteObject);
+          .delete('/api/reviews/?id=201');
 
     expect(response.statusCode).toBe(200);
     expect(response.body.index).toBe(201);

@@ -88,9 +88,11 @@ async function updateReviewsforFilm(updateQuery, updateValues)  {
 }
 
 /// delete opertaion
-async function deleteAllReviewsforFilm(deleteQuery)  {
+async function deleteAllReviewsforFilm(index)  {
 
   try {
+
+    let deleteQuery = {index: index};
 
     return await Review.findOneAndDelete(deleteQuery);
 

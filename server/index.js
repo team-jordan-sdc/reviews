@@ -53,10 +53,7 @@ app.put('/api/reviews', (req, res) => {
 
 // delete api
 app.delete('/api/reviews', (req, res) => {
-  const reqObj = JSON.parse(JSON.stringify(req.body));
-  const deleteQuery = reqObj.deleteQuery;
-
-  db.deleteAllReviewsforFilm(deleteQuery)
+  db.deleteAllReviewsforFilm(req.query.id)
   .then(results => res.status(200).json(results))
   .catch(err => {
     res.status(500).send();
@@ -64,7 +61,6 @@ app.delete('/api/reviews', (req, res) => {
     console.log(err);
   })
 });
-
 
 app.get('/api/products', (req, res) => {
   db.getProduct()
