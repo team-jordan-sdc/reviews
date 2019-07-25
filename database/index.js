@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/moodu');
+mongoose.connect('mongodb://localhost:27017/moodu', { useNewUrlParser: true, useFindAndModify: false } );
 
 
 /* SCHEMAS */
@@ -41,7 +41,7 @@ const  Review = mongoose.model('Review', reviewsSchema);
 const  Product = mongoose.model('Product', productsSchema);
 
 
-
+/// read operation
 async function getReviewsforFilm(index)  {
 
   try {
@@ -50,6 +50,24 @@ async function getReviewsforFilm(index)  {
 
     return await Review.find(query);
 
+  } catch (err) {
+    console.log(err.stack);
+  }
+
+}
+
+/// create operation
+async function saveReviewsforFilm(reviewObject)  {
+
+  try {
+
+    let saveReview = new Review(reviewObject);
+
+    await saveReview.save();
+
+    let query = {index: reviewObject.index}
+
+    return await Review.find(query);
 
   } catch (err) {
     console.log(err.stack);
@@ -57,6 +75,30 @@ async function getReviewsforFilm(index)  {
 
 }
 
+/// update operation
+async function updateReviewsforFilm(updateQuery, updateValues)  {
+
+  try {
+
+    return await Review.findOneAndUpdate(updateQuery, updateValues, {new: true});
+
+  } catch (err) {
+    console.log(err.stack);
+  }
+}
+
+/// delete opertaion
+async function deleteAllReviewsforFilm(deleteQuery)  {
+
+  try {
+
+    return await Review.findOneAndDelete(deleteQuery);
+
+  } catch (err) {
+    console.log(err.stack);
+  }
+
+}
 
 async function getProduct()  {
 
@@ -75,6 +117,8 @@ async function getProduct()  {
 module.exports.Review = Review;
 module.exports.Product = Product;
 module.exports.getReviewsforFilm = getReviewsforFilm;
+module.exports.saveReviewsforFilm = saveReviewsforFilm;
+module.exports.updateReviewsforFilm = updateReviewsforFilm;
+module.exports.deleteAllReviewsforFilm = deleteAllReviewsforFilm;
 module.exports.getProduct = getProduct;
-
 
