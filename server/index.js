@@ -8,7 +8,6 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 app.get('/', (req, res) => {
   console.log("root")
   res.send(200);
@@ -40,7 +39,6 @@ app.post('/api/reviews', (req, res) => {
 // update api
 app.put('/api/reviews', (req, res) => {
   const reqObj = JSON.parse(JSON.stringify(req.body));
-  console.log(reqObj);
   const updateQuery = reqObj.updateQuery;
   const updateValues = reqObj.updateValues;
 
@@ -56,7 +54,6 @@ app.put('/api/reviews', (req, res) => {
 // delete api
 app.delete('/api/reviews', (req, res) => {
   const reqObj = JSON.parse(JSON.stringify(req.body));
-  console.log(reqObj);
   const deleteQuery = reqObj.deleteQuery;
 
   db.deleteAllReviewsforFilm(deleteQuery)
@@ -80,4 +77,3 @@ let port = 3001;
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
 });
-
