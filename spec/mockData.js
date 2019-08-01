@@ -1,5 +1,5 @@
 const mockData = {
-  id:1,
+  index: 201,
   filmname: 'The Shawshank Redemption',
   length: 168,
   released: '11/24/2003',
@@ -11,7 +11,7 @@ const mockData = {
   sd: 'est Lorem voluptate Lorem',
   cc: 'excepteur',
   reviews: [
-   { id: 0,
+   { id: 1,
     review: 'Sint ea pariatur veniam velit nostrud mollit dolor cupidatat ex. Lorem do ut labore laboris dolor quis eiusmod sint reprehenderit ea elit Lorem deserunt sint. Id elit labore nostrud nisi mollit officia aute.',
     author: 'proident duis',
     rating: 91,
@@ -20,4 +20,4 @@ const mockData = {
    ]
 }
 
-export default mockData;
+module.exports.mockData = mockData;
