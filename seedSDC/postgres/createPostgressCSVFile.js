@@ -3,15 +3,14 @@ const fs = require('fs');
 const seed = require('../seedHelpers.js');
 require('dotenv').config({path: '../../.env'});
 
-var writer = csvWriter({sendHeaders: true, seperator: '|'});
-
-const postgresCsvFileGenerator = () => {
-
+async function postgresCsvFileGenerator() {
+  var filmObj = {};
+  var writer = csvWriter({sendHeaders: true, seperator: '|'});
   writer.pipe(fs.createWriteStream(process.env.POSTGRES_CSV_FILE_NAME));
 
   for (var i = 1; i <= process.env.POSTGRES_CSV_FILE_ROW_COUNTS; i++) {
-
-    var filmObj = seed.generateFilmObject(i);
+    console.log(i);
+    filmObj = seed.generateFilmObject(i);
 
     filmObj.reviews =
       JSON.stringify(filmObj.reviews.map((item)=>
@@ -19,12 +18,15 @@ const postgresCsvFileGenerator = () => {
       )
       ).replace(/\[/g, "{").replace(/\]/g, "}");
 
-    writer.write(
+    if(!writer.write(
       filmObj
-    );
+    ))
+    {
+      await new Promise((resolve)=>writer.once('drain',resolve));
+    }
   }
   writer.end();
   console.log('Postgress CSV file created: success');
-}
+};
 
 postgresCsvFileGenerator();
