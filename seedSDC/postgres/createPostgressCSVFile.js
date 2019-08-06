@@ -9,7 +9,6 @@ async function postgresCsvFileGenerator() {
   writer.pipe(fs.createWriteStream(process.env.POSTGRES_CSV_FILE_NAME));
 
   for (var i = 1; i <= process.env.POSTGRES_CSV_FILE_ROW_COUNTS; i++) {
-    console.log(i);
     filmObj = seed.generateFilmObject(i);
 
     filmObj.reviews =
@@ -27,6 +26,6 @@ async function postgresCsvFileGenerator() {
   }
   writer.end();
   console.log('Postgress CSV file created: success');
-};
+}
 
 postgresCsvFileGenerator();
