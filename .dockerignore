@@ -1,0 +1,7 @@
+node_modules
+films.csv
+ec2films.csv
+newrelic.js
+newrelic_agent.log
+bundle.js
+films.json
