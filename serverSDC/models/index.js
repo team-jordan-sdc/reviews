@@ -16,7 +16,7 @@ function writeFilmRow(filmObj, callback) {
         client.release();
         if (err) {
         console.log(err);
-        throw err;
+        callback(err);
         }
         callback(err, results.rowCount);
       });
@@ -26,7 +26,7 @@ function writeFilmRow(filmObj, callback) {
 
 function readFilmRow(filmindex, callback) {
 
-  var text = 'select filmindex, name, length, rating, released, studio, language, uhd, hdx, sd, cc, json_agg(reviews) as "reviews" from films where filmindex=$1 group by filmindex';
+  var text = 'select filmindex, name, length, rating, released, studio, language, uhd, hdx, sd, cc, array_to_json(reviews) as "reviews" from films where filmindex=$1 group by filmindex';
 
   var values = filmindex ? [filmindex] : [1];
   pgPool.connect((err, client, release) => {
@@ -42,7 +42,6 @@ function readFilmRow(filmindex, callback) {
           callback(err);
         }
         // mapping properties according to front end
-        results.rows[0].reviews = results.rows[0].reviews[0];
         results.rows[0]['filmname'] = results.rows[0]['name'];
         results.rows[0]['index'] = results.rows[0]['filmindex'];
         let released = JSON.stringify(results.rows[0]['released']).
