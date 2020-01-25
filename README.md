@@ -36,13 +36,13 @@ Comapred seeding and querying performance for 3 different database technologies 
 
 Performance Matrix
 
-Postgres - 2.5K qps (QBS) | 25K qps (CBS) | 2 to 10 ms (RPLT)
-Cassandra - 4K qps (QBS) | 3K qps (CBS) | 0.5 to 2 ms (RPLT)
-MongoDB - 2K qps (QBS) | 6K qps (CBS) |
+Postgres - 2.5K qps (QBS) | 25K qps (CBS) | 2 to 10 ms (RPLT).
+Cassandra - 4K qps (QBS) | 3K qps (CBS) | 0.5 to 2 ms (RPLT).
+MongoDB - 2K qps (QBS) | 6K qps (CBS).
 
-QBS -> Query based Seeding for 10M records
-CBS -> CSV file based seeding for 10M records
-RPLT -> Reading performance for last 10% records out of 10M
+QBS -> Query based Seeding for 10M records.
+CBS -> CSV file based seeding for 10M records.
+RPLT -> Reading performance for last 10% records out of 10M.
 
 ### phase 4
 server/serverSDC
