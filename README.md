@@ -1,60 +1,54 @@
-# Reviews Component for Moodu Project
+# Scaling 'reviews service' for Videoflix App (old name - Moodu)
 
-# contributors
-1. Amol Gajewar - Refoactoring Backend
-1. Galina Berger - Original
+### contributors
+1. Amol Gajewar
 
-Moodu is a full-stack web application used to display information for a specific TV show or a movie.  Our project constists of several modules including component that dispalys featured movie main information, component displaying information about the actors, and component displaying reviews and additional information
+### objectives
+Replacing backend for existing revivew service of Videoflix App to handle 10M records and scale it horizontally and vertically to handle 10K RPS.
 
-This particular component dispalys a scrollable list of reviews along with additional information such as length of the movie, rating, etc...
+Videoflix was developed as full-stack web application to display information for a specific TV show or a movie. Reviews service displays a scrollable list of reviews along with additional information such as language, length of the movie, released date, rating, etc.
 
-## Table of Contents
-
-1. [Usage](#Usage)
-2. [Requirements](#requirements)
-3. [Development](#development)
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
-### Prerequisites
-
-From within the root directory:
-
-```sh
-npm install
-```
-
-## Seeding the database:
-
-npm run seed
-
-## Compiling
-
-npm run react-dev
-
-## Running server
-
-npm run server-dev
-
-## Running the tests
-
-npm run test
+When developed initially review service was using MongoDB along with express.js in backend. It was designed to handle 100 records only.
 
 
-## Usage
-To retrieve set of reviews for a movie, use a query string: http://localhost:3001/?id=(number from 0-100)
+### phase 1
+### CRUD APIs for existing backend
+server/index.js
+Implemented and tested CRUD APIs for exsisting backend.
+
+### phase 2
+### seedSDC module
+seedSDC/seedHelpers
+Helper functions to generate seeding data.
+
+seedSDC/mongoDB
+Seeding script to generate 10M records as well as to create JSON file. Provides both the options to import data from JSON file or Query based seeding for MongoDB.
+
+seedSDC/postgres
+Seeding script to generate 10M records as well as to create CSV file. Provides both the options to import data from CSV / JSON file or Query based seeding for PostgreSQL.
+
+seedSDC/cassandra
+Seeding script to generate 10M records as well as to create CSV file. Provides both the options to import data from CSV file or Query based seeding for Cassandra.
+
+### phase 3
+Comapred seeding and querying performance for 3 different database technologies and chose the most suitable to scale further.
 
 
+Performance Matrix
 
-## Built With
+Postgres - 2.5K qps (QBS) | 25K qps (CBS) | 2 to 10 ms (RPLT).
 
-* [React.js](https://reactjs.org) - Front-end framework
-* [Styled-Components](https://www.styled-components.com/docs/basics) - Styling
-* [Node.js](https://nodejs.org/en/) - Server-side solution
-* [Express.js](https://expressjs.com/) - Server
-* [MongoDB](https://www.mongodb.com/) - Data management
-* [Jest](https://jestjs.io/) - Javascript Testing framework
-* [Enzyme](https://github.com/airbnb/enzyme) -Testing framework for React Components
+Cassandra - 4K qps (QBS) | 3K qps (CBS) | 0.5 to 2 ms (RPLT).
 
+MongoDB - 2K qps (QBS) | 6K qps (CBS).
+
+QBS -> Query based Seeding for 10M records.
+CBS -> CSV file based seeding for 10M records.
+RPLT -> Reading performance for last 10% records out of 10M.
+
+### phase 4
+server/serverSDC
+Implemented MVC and REST APIs for PostgreSQL and load tested GET and POST routes using K6 and New Relic.
+
+### phase 5
+Dockerized review service and deployed it on AWS to further scale vertically and horizontally.
